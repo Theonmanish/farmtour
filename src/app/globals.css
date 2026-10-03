@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-canvas-sub: #0b0d0b;
+    --bg-canvas-base: #111311;
+    --bg-surface: #161916;
+    --bg-surface-bright: #202420;
+    --text-parchment: #eae4d8;
+    --text-muted: #a8a89c;
+    --text-field-grey: #6b6d66;
+    --accent-gold: #b99868;
+    --accent-gold-hover: #c8a87a;
+    --border-subtle: #282c28;
+    --border-gold: rgba(185, 152, 104, 0.2);
+  }
+
+  html,
+  body {
+    background-color: var(--bg-canvas-base);
+    color: var(--text-parchment);
+    font-family: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom utility styles conforming to DESIGN.md */
+
+.font-serif-botanical {
+  font-family: var(--font-eb-garamond), Georgia, serif;
+}
+
+.font-sans-ui {
+  font-family: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* Custom subtle scrollbar styling for detail sheet */
+.scrollbar-botanical::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-botanical::-webkit-scrollbar-track {
+  background: #111311;
+  border-radius: 4px;
+}
+
+.scrollbar-botanical::-webkit-scrollbar-thumb {
+  background: #282c28;
+  border-radius: 4px;
+}
+
+.scrollbar-botanical::-webkit-scrollbar-thumb:hover {
+  background: #b99868;
+}

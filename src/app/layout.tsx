@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { EB_Garamond, DM_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const ebGaramond = EB_Garamond({
@@ -32,6 +33,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[#111311] text-[#EAE4D8] selection:bg-[#B99868]/30 selection:text-[#EAE4D8]">
         {children}
+        <Analytics />
       </body>
     </html>
   );

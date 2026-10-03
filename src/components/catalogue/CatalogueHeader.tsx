@@ -14,13 +14,7 @@ export function CatalogueHeader() {
           <h1 className="font-serif-botanical text-3xl sm:text-4xl md:text-5xl text-[#EAE4D8] font-normal tracking-tight">
             Soans Farm Plant Catalogue
           </h1>
-          <p className="font-sans-ui text-sm sm:text-base text-[#A8A89C] mt-2 max-w-2xl leading-relaxed">
-            Soans Farm contains a diverse collection of plants, including fruit crops, plantation species, ornamental plants and exotic varieties.
-          </p>
-          <p className="font-sans-ui text-sm sm:text-base text-[#A8A89C] mt-2 max-w-2xl leading-relaxed">
-            The catalogue documents individual plants using their plant numbers, along with their common names, scientific names and other botanical information.
-
-          </p>
+          
         </div>
 
         

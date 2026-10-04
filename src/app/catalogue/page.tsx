@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import { CatalogueClient } from "@/components/catalogue/CatalogueClient";
+import { MapsNavbar } from "@/components/maps/MapsNavbar";
+import { PlantInteractionProvider } from "@/components/plant/PlantInteractionProvider";
 
 export const metadata: Metadata = {
   title: "Plant Collection — Soans Farm",
@@ -7,5 +9,14 @@ export const metadata: Metadata = {
 };
 
 export default function CataloguePage() {
-  return <CatalogueClient />;
+  return (
+    <PlantInteractionProvider>
+      <div className="bg-[#111311] px-4 pt-3 sm:px-6 sm:pt-4">
+        <div className="mx-auto w-full">
+          <MapsNavbar />
+        </div>
+      </div>
+      <CatalogueClient />
+    </PlantInteractionProvider>
+  );
 }

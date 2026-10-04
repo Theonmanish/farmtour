@@ -6,16 +6,12 @@ interface PlantListProps {
   plants: Plant[];
   selectedPlantId: string | null;
   onSelectPlant: (plant: Plant) => void;
-  onResetSearch: () => void;
-  isSearching: boolean;
 }
 
 export function PlantList({
   plants,
   selectedPlantId,
   onSelectPlant,
-  onResetSearch,
-  isSearching,
 }: PlantListProps) {
   if (plants.length === 0) {
     return (
@@ -37,22 +33,12 @@ export function PlantList({
         </div>
         <div>
           <h3 className="font-serif-botanical text-xl text-[#EAE4D8] font-normal">
-            No matching plants found
+            No plant records available
           </h3>
           <p className="font-sans-ui text-sm text-[#A8A89C] mt-1 max-w-md mx-auto leading-relaxed">
-            We couldn&apos;t find any plant records matching your search terms.
-            Try searching by plant number (e.g., 0001 or 42) or species name.
+            Plant records will appear here when they are available.
           </p>
         </div>
-        {isSearching && (
-          <button
-            type="button"
-            onClick={onResetSearch}
-            className="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-[#0B0D0B] bg-[#B99868] hover:bg-[#C8A87A] px-4 py-2 rounded transition-colors"
-          >
-            Clear Search Filter
-          </button>
-        )}
       </div>
     );
   }

@@ -1,62 +1,20 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import { Plant } from "@/data/plants";
-import { getPlants, searchPlants, getAdjacentPlantIds } from "@/lib/plants";
+import { getPlants } from "@/lib/plants";
+import { usePlantInteraction } from "@/components/plant/PlantInteractionProvider";
 import { CatalogueHeader } from "./CatalogueHeader";
-import { PlantSearchInput } from "./PlantSearchInput";
 import { PlantList } from "./PlantList";
-import { PlantDetailSheet } from "./PlantDetailSheet";
 
 export function CatalogueClient() {
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedPlantId, setSelectedPlantId] = useState<string | null>(null);
+  const { selectedPlantId, openPlant } = usePlantInteraction();
 
   // All plants in catalogue order
   const allPlants = useMemo(() => getPlants(), []);
 
-  // Filtered plants based on user search
-  const filteredPlants = useMemo(() => {
-    return searchPlants(searchQuery);
-  }, [searchQuery]);
-
-  // Selected plant object
-  const selectedPlant = useMemo(() => {
-    if (!selectedPlantId) return null;
-    return allPlants.find((p) => p.id === selectedPlantId) || null;
-  }, [allPlants, selectedPlantId]);
-
-  // Navigation indices (based on full sorted catalogue)
-  const { prevId, nextId } = useMemo(() => {
-    if (!selectedPlantId) return { prevId: null, nextId: null };
-    return getAdjacentPlantIds(selectedPlantId);
-  }, [selectedPlantId]);
-
-  const currentIndex = useMemo(() => {
-    if (!selectedPlantId) return 0;
-    const idx = allPlants.findIndex((p) => p.id === selectedPlantId);
-    return idx !== -1 ? idx + 1 : 0;
-  }, [allPlants, selectedPlantId]);
-
-  // Handlers
   const handleSelectPlant = (plant: Plant) => {
-    setSelectedPlantId(plant.id);
-  };
-
-  const handleCloseSheet = () => {
-    setSelectedPlantId(null);
-  };
-
-  const handleNavigatePrev = () => {
-    if (prevId) {
-      setSelectedPlantId(prevId);
-    }
-  };
-
-  const handleNavigateNext = () => {
-    if (nextId) {
-      setSelectedPlantId(nextId);
-    }
+    openPlant(plant);
   };
 
   return (
@@ -65,24 +23,12 @@ export function CatalogueClient() {
         {/* Catalogue Header */}
         <CatalogueHeader />
 
-        {/* Search Field */}
-        <section className="bg-[#161916] border border-[#282C28] p-4 sm:p-6 rounded-xl shadow-sm">
-          <PlantSearchInput
-            value={searchQuery}
-            onChange={setSearchQuery}
-            resultCount={filteredPlants.length}
-            totalCount={allPlants.length}
-          />
-        </section>
-
         {/* Plant List */}
         <section>
           <PlantList
-            plants={filteredPlants}
+            plants={allPlants}
             selectedPlantId={selectedPlantId}
             onSelectPlant={handleSelectPlant}
-            onResetSearch={() => setSearchQuery("")}
-            isSearching={searchQuery.trim().length > 0}
           />
         </section>
       </main>
@@ -92,18 +38,6 @@ export function CatalogueClient() {
         <p>© Soans Farm Botanical Sanctuary — Moodbidri, Western Ghats.</p>
         <p className="mt-1">Documented Flora Archive MVP</p>
       </footer>
-
-      {/* Plant Detail Bottom Sheet */}
-      <PlantDetailSheet
-        plant={selectedPlant}
-        onClose={handleCloseSheet}
-        onNavigatePrev={handleNavigatePrev}
-        onNavigateNext={handleNavigateNext}
-        hasPrev={Boolean(prevId)}
-        hasNext={Boolean(nextId)}
-        currentIndex={currentIndex}
-        totalCount={allPlants.length}
-      />
     </div>
   );
 }

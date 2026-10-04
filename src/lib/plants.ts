@@ -23,31 +23,6 @@ export function getPlants(): Plant[] {
 }
 
 /**
- * Finds a plant by its unique ID.
- */
-export function getPlantById(id: string): Plant | undefined {
-  return plants.find((p) => p.id === id);
-}
-
-/**
- * Finds a plant by its plant number.
- * Supports exact string match or normalized 4-digit search.
- */
-export function getPlantByNumber(plantNumber: string): Plant | undefined {
-  const normalized = normalizeSearchTerm(plantNumber);
-  return plants.find(
-    (p) => p.plant_number === plantNumber || p.plant_number === normalized
-  );
-}
-
-/**
- * Alias for getPlants() to provide catalogue items list.
- */
-export function getCatalogueItems(): Plant[] {
-  return getPlants();
-}
-
-/**
  * Returns the previous and next plant IDs relative to the specified plant ID
  * in catalogue order (sorted by plant_number).
  */

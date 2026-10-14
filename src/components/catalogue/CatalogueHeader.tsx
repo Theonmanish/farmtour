@@ -1,5 +1,3 @@
-import React from "react";
-
 export function CatalogueHeader() {
   return (
     <header className="border-b border-[#282C28] pb-8 pt-4">

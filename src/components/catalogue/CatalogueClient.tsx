@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useMemo } from "react";
-import { Plant } from "@/data/plants";
+import { useMemo } from "react";
+import type { Plant } from "@/data/plants";
 import { getPlants } from "@/lib/plants";
 import { usePlantInteraction } from "@/components/plant/PlantInteractionProvider";
 import { CatalogueHeader } from "./CatalogueHeader";

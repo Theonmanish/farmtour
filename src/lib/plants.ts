@@ -1,4 +1,4 @@
-import { plants, Plant } from "@/data/plants";
+import { plants, type Plant } from "@/data/plants";
 
 /**
  * Normalizes a potential plant number search term.

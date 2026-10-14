@@ -1,5 +1,4 @@
-import React from "react";
-import { Plant } from "@/data/plants";
+import type { Plant } from "@/data/plants";
 import { PlantListItem } from "./PlantListItem";
 
 interface PlantListProps {

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Plant } from "@/data/plants";
+import type { Plant } from "@/data/plants";
 import { DetailContent } from "@/components/plant/DetailContent";
 
 interface PlantDetailSheetProps {

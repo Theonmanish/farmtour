@@ -78,7 +78,7 @@ export function MapsNavbar() {
 
   return (
     <header className="relative z-40 w-full border-b border-[#282C28] bg-[#111311] pt-[env(safe-area-inset-top)]">
-      <div className="mx-auto flex h-[52px] w-full items-center justify-between gap-3 px-4 sm:px-6 lg:min-h-[77px] lg:max-w-[1280px] lg:justify-center lg:gap-20 lg:px-8">
+      <div className="mx-auto flex h-[66px] w-full items-center justify-between gap-3 px-4 sm:px-6 lg:min-h-[77px] lg:max-w-[1280px] lg:justify-center lg:gap-20 lg:px-8">
         <Link
           aria-label="Soans Farm home"
           className="flex min-w-0 shrink-0 items-center gap-2"
